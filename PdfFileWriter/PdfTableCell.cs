@@ -6,11 +6,10 @@
 //	PdfTableCell
 //	Data table cell support.
 //
-//	Granotech Limited
-//	Author: Uzi Granot
+//	Uzi Granot
 //	Version: 1.0
 //	Date: April 1, 2013
-//	Copyright (C) 2013-2016 Granotech Limited. All Rights Reserved
+//	Copyright (C) 2013-2018 Uzi Granot. All Rights Reserved
 //
 //	PdfFileWriter C# class library and TestPdfFileWriter test/demo
 //  application are free software.
@@ -557,6 +556,7 @@ public class PdfTableCell
 				else if(ValueType == typeof(Int64)) FormattedText = ((Int64) Value).ToString(Format, NumberFormat);
 				else if(ValueType == typeof(UInt64)) FormattedText = ((UInt64) Value).ToString(Format, NumberFormat);
 				else if(ValueType == typeof(Decimal)) FormattedText = ((Decimal) Value).ToString(Format, NumberFormat);
+				else if(ValueType == typeof(DBNull)) FormattedText = String.Empty;
 				else throw new ApplicationException("PdfTableCell: Unknown object type");
 
 				// add line spacing

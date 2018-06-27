@@ -6,11 +6,10 @@
 //	PdfFontFileClasses
 //	Support classes for the PdfFontFile classs.
 //
-//	Granotech Limited
-//	Author: Uzi Granot
+//	Uzi Granot
 //	Version: 1.0
 //	Date: April 1, 2013
-//	Copyright (C) 2013-2016 Granotech Limited. All Rights Reserved
+//	Copyright (C) 2013-2018 Uzi Granot. All Rights Reserved
 //
 //	PdfFileWriter C# class library and TestPdfFileWriter test/demo
 //  application are free software.
@@ -106,7 +105,7 @@ internal class cmapSubTbl : IComparable<cmapSubTbl>
 	internal UInt16		Language;				// this field is relevant to Macintosh (platform ID 1)
 	internal UInt16		SegCount;				// (Format 4) SegCount.
 	internal cmapSeg[]	SegArray;				// (Format 4) segment array
-	internal UInt16[]		GlyphArray;				// glyph array translate character for format 0 or index for format 4 to glyph code
+	internal UInt16[]	GlyphArray;				// glyph array translate character for format 0 or index for format 4 to glyph code
 
 	// default constructor
 	internal cmapSubTbl() {}

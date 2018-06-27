@@ -3,8 +3,12 @@
 # gitignore
 
 *.suo
+*.user
+*.userosscache
+*.sln.docstates
 .vs/
 PdfFileWriter/bin/
 PdfFileWriter/obj/
 TestPdfFileWriter/bin/
 TestPdfFileWriter/obj/
+TestPdfFileWriter/Work/

@@ -6,11 +6,10 @@
 //	OtherExample
 //	Produce PDF document when Other Example button is clicked.
 //
-//	Granotech Limited
-//	Author: Uzi Granot
+//	Uzi Granot
 //	Version: 1.0
 //	Date: April 1, 2013
-//	Copyright (C) 2013-2016 Granotech Limited. All Rights Reserved
+//	Copyright (C) 2013-2018 Uzi Granot. All Rights Reserved
 //
 //	PdfFileWriter C# class library and TestPdfFileWriter test/demo
 //  application are free software.
@@ -799,7 +798,7 @@ public class OtherExample
 		// image resource
 		PdfImageControl ImageControl = new PdfImageControl();
 		ImageControl.Resolution = 300.0;
-		PdfImage Image1 = new PdfImage(Document, "TestFiles/TestImage.jpg", ImageControl);
+		PdfImage Image1 = new PdfImage(Document, "TestImage.jpg", ImageControl);
 
 		// adjust image size and position
 		PdfRectangle NewSize = Image1.ImageSizePosition(0.9 * AreaWidth, 0.9 * AreaHeight, ContentAlignment.MiddleCenter);
@@ -833,7 +832,7 @@ public class OtherExample
 		PdfImageControl ImageControl = new PdfImageControl();
 		ImageControl.Resolution = 300.0;
 		ImageControl.CropPercent = new RectangleF(50.0F, 38.0F, 40.0F, 40.0F);
-		PdfImage Image1 = new PdfImage(Document, "TestFiles/TestImage.jpg", ImageControl);
+		PdfImage Image1 = new PdfImage(Document, "TestImage.jpg", ImageControl);
 
 		// adjust image size and position
 		PdfRectangle NewSize = Image1.ImageSizePosition(0.9 * AreaWidth, 0.9 * AreaHeight, ContentAlignment.MiddleCenter);
@@ -1463,13 +1462,11 @@ public class OtherExample
 
 		Barcode128 Barcode = new Barcode128("PDF File Writer");
 //		Barcode128 Barcode = new Barcode128(new Int32[] {104, 48, 36, 38, 0, 38, 73, 76, 69, 0, 55, 82, 73, 84, 69, 82, 44, 106});
-		Trace.BarcodeTrace(Barcode);
 		Contents.DrawBarcode(0.25, BaseLine, 0.012, 0.5, Barcode, ArialNormal, 8.0);
 
 		BaseLine -= 1.0;
 		Barcode128 Barcode2 = new Barcode128("1234567890123456789012345678");
 //		Barcode128 Barcode2 = new Barcode128(new Int32[] {105, 12, 34, 56, 78, 90, 12, 34, 56, 78, 90, 12, 34, 56, 78});
-		Trace.BarcodeTrace(Barcode2);
 		Contents.DrawBarcode(0.25, BaseLine, 0.012, 0.5, Barcode2, ArialNormal, 8.0);
 		BaseLine -= 2 * LineSpacing;
 		Contents.DrawText(ArialNormal, NoteSize, 0.25, BaseLine, "All digits code. Note the high density.");
@@ -1501,7 +1498,6 @@ public class OtherExample
 //		BarcodeInter2of5 Barcode = new BarcodeInter2of5("1234567", true);
 		Barcode39 Barcode = new Barcode39("123456789012");
 //		Barcode39 Barcode = new Barcode39(new Int32[] {43, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 43});
-		Trace.BarcodeTrace(Barcode);
 		Contents.DrawBarcode(0.25, BaseLine, 0.012, 0.5, Barcode, ArialNormal, 8.0);
 		BaseLine -= 0.75;
 		Contents.DrawBarcode(0.5 * AreaWidth, BaseLine, TextJustify.Center, 0.012, 0.5, Color.DarkMagenta, Barcode, ArialNormal, 8.0);
@@ -1532,13 +1528,11 @@ public class OtherExample
 		Double LineSpacing = ArialNormal.LineSpacing(NoteSize);
 
 		BarcodeEAN13 Barcode = new BarcodeEAN13("9876543210980");
-		Trace.BarcodeTrace(Barcode);
 		Contents.DrawBarcode(0.25, BaseLine, 0.014, 0.75, Barcode, ArialNormal, 8.0);
 		BaseLine -= 1.3 * LineSpacing;
 		Contents.DrawText(ArialNormal, NoteSize, 0.25, BaseLine, "EAN-13");
 		BaseLine -= 0.9;
 		BarcodeEAN13 Barcode2 = new BarcodeEAN13("123456789010");
-		Trace.BarcodeTrace(Barcode2);
 		Contents.DrawBarcode(0.25, BaseLine, 0.014, 0.75, Barcode2, ArialNormal, 8.0);
 		BaseLine -= 1.3 * LineSpacing;
 		Contents.DrawText(ArialNormal, NoteSize, 0.25, BaseLine, "UPC-A");
@@ -1673,7 +1667,7 @@ public class OtherExample
 		PdfRectangle AnnotRect = ImageSizePos.ImageArea(480, 360, AreaLeft, AreaBottom, AreaRight - AreaLeft, AreaTop - AreaBottom, ContentAlignment.MiddleCenter);
 
 		// create display media object
-		PdfDisplayMedia DisplayMedia = new PdfDisplayMedia(PdfEmbeddedFile.CreateEmbeddedFile(Document, "TestFiles/LooneyTunes.mp4"));
+		PdfDisplayMedia DisplayMedia = new PdfDisplayMedia(PdfEmbeddedFile.CreateEmbeddedFile(Document, "LooneyTunes.mp4"));
 
 		// create annotation object
 		PdfAnnotation Annotation = Page.AddScreenAction(AnnotRect, DisplayMedia);
@@ -1721,7 +1715,7 @@ public class OtherExample
 			)
 		{
 		// create display media object
-		PdfDisplayMedia DisplayMedia = new PdfDisplayMedia(PdfEmbeddedFile.CreateEmbeddedFile(Document, "TestFiles/Omega.mp4"));
+		PdfDisplayMedia DisplayMedia = new PdfDisplayMedia(PdfEmbeddedFile.CreateEmbeddedFile(Document, "Omega.mp4"));
 
 		// activate display controls
 		DisplayMedia.DisplayControls(true);
@@ -1761,7 +1755,7 @@ public class OtherExample
 			)
 		{
 		// create embedded media file
-		PdfDisplayMedia DisplayMedia = new PdfDisplayMedia(PdfEmbeddedFile.CreateEmbeddedFile(Document, "TestFiles/Ring01.wav"));
+		PdfDisplayMedia DisplayMedia = new PdfDisplayMedia(PdfEmbeddedFile.CreateEmbeddedFile(Document, "Ring01.wav"));
 		DisplayMedia.SetMediaWindow(MediaWindow.Hidden);
 		AnnotDisplayMedia RingSound = new AnnotDisplayMedia(DisplayMedia);
 
@@ -1789,7 +1783,7 @@ public class OtherExample
 			)
 		{
 		// create embedded media file
-		PdfEmbeddedFile EmbeddedFile = PdfEmbeddedFile.CreateEmbeddedFile(Document, "TestFiles/BookList.txt");
+		PdfEmbeddedFile EmbeddedFile = PdfEmbeddedFile.CreateEmbeddedFile(Document, "BookList.txt");
 		AnnotFileAttachment FileIcon = new AnnotFileAttachment(EmbeddedFile, FileAttachIcon.Paperclip);
 
 		// display text area to activate the file attachment
@@ -1829,7 +1823,7 @@ public class OtherExample
 		Contents.DrawTextWithAnnotation(Page, ArialNormal, 12, PosX + 0.5 * AreaWidth, PosY + 0.5 * AreaHeight,
 			TextJustify.Center, DrawStyle.Normal, Color.DarkViolet,
 			"Right click to open or save the attached file,",
-			new AnnotFileAttachment(PdfEmbeddedFile.CreateEmbeddedFile(Document, "TestFiles/BookList.txt")));
+			new AnnotFileAttachment(PdfEmbeddedFile.CreateEmbeddedFile(Document, "BookList.txt")));
 
 		// example note
 		Contents.DrawText(ArialNormal, NoteSize, PosX + NoteX, PosY + NoteY0, "Example 7e: File attachment without icon");
@@ -1850,7 +1844,7 @@ public class OtherExample
 		TextBox Box = new TextBox(AreaWidth - 0.2);
  
 		// create display media object
-		PdfDisplayMedia Omega = new PdfDisplayMedia(PdfEmbeddedFile.CreateEmbeddedFile(Document, "TestFiles/Omega.mp4"));
+		PdfDisplayMedia Omega = new PdfDisplayMedia(PdfEmbeddedFile.CreateEmbeddedFile(Document, "Omega.mp4"));
 		Omega.DisplayControls(true);
 		Omega.RepeatCount(0);
 		Omega.SetMediaWindow(MediaWindow.Floating, 640, 360, WindowPosition.Center,
@@ -1859,7 +1853,7 @@ public class OtherExample
 		Box.AddText(ArialNormal, 11, DrawStyle.Underline, Color.Blue, "Omega commercial\n", new AnnotDisplayMedia(Omega));
 
 		// create embedded media file
-		PdfDisplayMedia RingSound = new PdfDisplayMedia(PdfEmbeddedFile.CreateEmbeddedFile(Document, "TestFiles/Ring01.wav"));
+		PdfDisplayMedia RingSound = new PdfDisplayMedia(PdfEmbeddedFile.CreateEmbeddedFile(Document, "Ring01.wav"));
 		RingSound.SetMediaWindow(MediaWindow.Hidden);
 		Box.AddText(ArialNormal, 11, "Sound file: ");
 		Box.AddText(ArialNormal, 11, "Ring Tone: \n", new AnnotDisplayMedia(RingSound));
@@ -1875,7 +1869,7 @@ public class OtherExample
 		Box.AddText(ArialNormal, 11, "Page 8: \n", new AnnotLinkAction("Page8"));
 
 		// create embedded media file
-		PdfEmbeddedFile EmbeddedFile = PdfEmbeddedFile.CreateEmbeddedFile(Document, "TestFiles/BookList.txt");
+		PdfEmbeddedFile EmbeddedFile = PdfEmbeddedFile.CreateEmbeddedFile(Document, "BookList.txt");
 		Box.AddText(ArialNormal, 11, "View attached file: ");
 		Box.AddText(ArialNormal, 11, "Book List: \n", new AnnotFileAttachment(EmbeddedFile, FileAttachIcon.NoIcon));
 

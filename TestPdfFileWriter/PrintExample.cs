@@ -6,11 +6,10 @@
 //	PrintExample
 //	Produce PDF file when the Print Example is clicked.
 //
-//	Granotech Limited
-//	Author: Uzi Granot
+//	Uzi Granot
 //	Version: 1.0
 //	Date: April 1, 2013
-//	Copyright (C) 2013-2016 Granotech Limited. All Rights Reserved
+//	Copyright (C) 2013-2018 Uzi Granot. All Rights Reserved
 //
 //	PdfFileWriter C# class library and TestPdfFileWriter test/demo
 //  application are free software.
@@ -40,7 +39,7 @@ public class PrintExample
 	private	Int32		PageNo;
 
 	////////////////////////////////////////////////////////////////////
-	// Create charting examples PDF document
+	// Create print example
 	////////////////////////////////////////////////////////////////////
 	
 	public void Test

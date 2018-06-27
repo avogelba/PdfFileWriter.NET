@@ -6,11 +6,10 @@
 //	Location marker
 //	Internal class for managing document's location markers. 
 //
-//	Granotech Limited
-//	Author: Uzi Granot
+//	Uzi Granot
 //	Version: 1.0
 //	Date: April 1, 2013
-//	Copyright (C) 2013-2016 Granotech Limited. All Rights Reserved
+//	Copyright (C) 2013-2018 Uzi Granot. All Rights Reserved
 //
 //	PdfFileWriter C# class library and TestPdfFileWriter test/demo
 //  application are free software.

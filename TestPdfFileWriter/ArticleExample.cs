@@ -6,11 +6,10 @@
 //	ArticleExample
 //	Produce PDF file when the Artice Example is clicked.
 //
-//	Granotech Limited
-//	Author: Uzi Granot
+//	Uzi Granot
 //	Version: 1.0
 //	Date: April 1, 2013
-//	Copyright (C) 2013-2016 Granotech Limited. All Rights Reserved
+//	Copyright (C) 2013-2018 Uzi Granot. All Rights Reserved
 //
 //	PdfFileWriter C# class library and TestPdfFileWriter test/demo
 //  application are free software.
@@ -72,7 +71,7 @@ public class ArticleExample
 
 		PdfInfo Info = PdfInfo.CreatePdfInfo(Document);
 		Info.Title("Article Example");
-		Info.Author("Uzi Granot Granotech Limited");
+		Info.Author("Uzi Granot");
 		Info.Keywords("PDF, .NET, C#, Library, Document Creator");
 		Info.Subject("PDF File Writer C# Class Library (Version 1.14.1)");
 
@@ -366,7 +365,7 @@ public class ArticleExample
 		ImageControl.ImageQuality = 50;
 //		ImageControl.SaveAs = SaveImageAs.GrayImage;
 //		ImageControl.ReverseBW = true;
-		PdfImage Image1 = new PdfImage(Document, "TestFiles/TestImage.jpg", ImageControl);
+		PdfImage Image1 = new PdfImage(Document, "TestImage.jpg", ImageControl);
 
 		// save graphics state
 		Contents.SaveGraphicsState();

@@ -6,11 +6,10 @@
 //	PdfDocument
 //	The main class of PDF object.
 //
-//	Granotech Limited
-//	Author: Uzi Granot
+//	Uzi Granot
 //	Version: 1.0
 //	Date: April 1, 2013
-//	Copyright (C) 2013-2016 Granotech Limited. All Rights Reserved
+//	Copyright (C) 2013-2018 Uzi Granot. All Rights Reserved
 //
 //	PdfFileWriter C# class library and TestPdfFileWriter test/demo
 //  application are free software.
@@ -136,6 +135,12 @@
 //		Document links and enhanced multi media and file attachment.
 //	Version 1.19.1 2016/07/27
 //		Fix location marker problem.
+//	Version 1.19.2 2017/08/30
+//		Remove debug working directory from project settings
+//	Version 1.19.3 2018/06/24
+//		Fix PdfFontFile.BuildLocaTable method. Long format buffer
+//		pointer initialization.
+//		Fix PdfTableCell add value type of DBNull.
 //
 /////////////////////////////////////////////////////////////////////
 
@@ -285,12 +290,12 @@ public class PdfDocument : IDisposable
 	/// <summary>
 	/// Library revision number
 	/// </summary>
-	public static readonly String RevisionNumber = "1.19.1";
+	public static readonly String RevisionNumber = "1.19.3";
 
 	/// <summary>
 	/// Library revision date
 	/// </summary>
-	public static readonly String RevisionDate = "2016/07/27";
+	public static readonly String RevisionDate = "2018/06/24";
 
 	/// <summary>
 	/// Scale factor

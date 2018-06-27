@@ -8,11 +8,10 @@
 //  project. It is a windows form class. It allows the operator to
 //  create two PDF files and to list all Truetype fonts available.
 //
-//	Granotech Limited
-//	Author: Uzi Granot
+//	Uzi Granot
 //	Version: 1.0
 //	Date: April 1, 2013
-//	Copyright (C) 2013-2016 Granotech Limited. All Rights Reserved
+//	Copyright (C) 2013-2018 Uzi Granot. All Rights Reserved
 //
 //	PdfFileWriter C# class library and TestPdfFileWriter test/demo
 //  application are free software.
@@ -28,6 +27,7 @@
 
 using PdfFileWriter;
 using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace TestPdfFileWriter
@@ -45,12 +45,20 @@ public partial class TestPdfFileWriter : Form
 			EventArgs e
 			)
 		{
+		Text = "PdfFileWriter-Revision " + PdfDocument.RevisionNumber + " " + PdfDocument.RevisionDate + "-\u00a9 2013-2018 Uzi Granot";
+
+		#if DEBUG
+		// current directory
+		string CurDir = Environment.CurrentDirectory;
+		string WorkDir = CurDir.Replace("bin\\Debug", "Work");
+		if(WorkDir != CurDir && Directory.Exists(WorkDir)) Environment.CurrentDirectory = WorkDir;
+
 		// open trace file
 		Trace.Open("PdfFileWriterTrace.txt");
 
 		// program title
-		Text = "PdfFileWriter-Revision " + PdfDocument.RevisionNumber + " " + PdfDocument.RevisionDate + "-\u00a9 2013-2016 Granotech Limited";
 		Trace.Write(Text);
+		#endif
 
 		// copyright box
 		CopyrightTextBox.Rtf =
@@ -61,7 +69,7 @@ public partial class TestPdfFileWriter : Form
 			"Revision Number: " + PdfDocument.RevisionNumber + "\\par \n" +
 			"Revision Date: " + PdfDocument.RevisionDate + "\\par \n" +
 			"Author: Uzi Granot\\par\\par \n" +
-			"Copyright \u00a9 2013-2016 Granotech Limited. All rights reserved.\\par\\par \n" +
+			"Copyright \u00a9 2013-2018 Uzi Granot. All rights reserved.\\par\\par \n" +
 			"Free software distributed under the Code Project Open License (CPOL) 1.02.\\par \n" +
 			"As per PdfFileWriterReadmeAndLicense.pdf file attached to this distribution.\\par \n" +
 			"You must read and agree with the terms specified to use this program.}";
@@ -79,14 +87,24 @@ public partial class TestPdfFileWriter : Form
 			object sender,
 			EventArgs e
 			)
-        {
-		ExceptionReport.Wrap("PDF Document creation falied", delegate { 
-			
+		{
+		try
+			{
 			ArticleExample AE = new ArticleExample();
 			AE.Test(DebugCheckBox.Checked, "ArticleExample.pdf");
 			return;
-	    });
-    }
+			}
+
+		catch (Exception Ex)
+			{
+			// error exit
+			String[] ExceptionStack = ExceptionReport.GetMessageAndStack(Ex);
+			MessageBox.Show(this, "PDF Document creation falied\n" + ExceptionStack[0] + "\n" + ExceptionStack[1],
+				"PDFDocument Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+			return;
+			}
+		}
+
 	////////////////////////////////////////////////////////////////////
 	// Other example
 	////////////////////////////////////////////////////////////////////
@@ -97,13 +115,22 @@ public partial class TestPdfFileWriter : Form
 			EventArgs e
 			)
 		{
-        ExceptionReport.Wrap("PDF Document creation falied",delegate {
-            
+		try
+			{
 			OtherExample OE = new OtherExample();
 			OE.Test(DebugCheckBox.Checked, "OtherExample.pdf");
 			return;
-	    });
-        }
+			}
+
+		catch (Exception Ex)
+			{
+			// error exit
+			String[] ExceptionStack = ExceptionReport.GetMessageAndStack(Ex);
+			MessageBox.Show(this, "PDF Document creation falied\n" + ExceptionStack[0] + "\n" + ExceptionStack[1],
+				"PDFDocument Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+			return;
+			}
+		}
 
 	////////////////////////////////////////////////////////////////////
 	// Chart Example
@@ -111,12 +138,21 @@ public partial class TestPdfFileWriter : Form
 
 	private void OnChartExample(object sender, EventArgs e)
 		{
-        ExceptionReport.Wrap("PDF Document creation falied",delegate
-            {            
+		try
+			{
 			ChartExample CE = new ChartExample();
 			CE.Test(DebugCheckBox.Checked, "ChartExample.pdf");
 			return;
-			});
+			}
+
+		catch (Exception Ex)
+			{
+			// error exit
+			String[] ExceptionStack = ExceptionReport.GetMessageAndStack(Ex);
+			MessageBox.Show(this, "PDF Document creation falied\n" + ExceptionStack[0] + "\n" + ExceptionStack[1],
+				"PDFDocument Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+			return;
+			}
 		}
 
 	////////////////////////////////////////////////////////////////////
@@ -125,14 +161,23 @@ public partial class TestPdfFileWriter : Form
 
 	private void OnPrintExample(object sender, EventArgs e)
 		{
-            ExceptionReport.Wrap("PDF Document creation falied",delegate       
-			    {
-			    PrintExample PE = new PrintExample();
-			    PE.Test(DebugCheckBox.Checked, "PrintExample.pdf");
-    //			ProgramTestExample PTE = new ProgramTestExample();
-    //			PTE.Test(DebugCheckBox.Checked, "ProgramTestExample.pdf");
-			    return;
-			    });
+		try
+			{
+			PrintExample PE = new PrintExample();
+			PE.Test(DebugCheckBox.Checked, "PrintExample.pdf");
+//			ProgramTestExample PTE = new ProgramTestExample();
+//			PTE.Test(DebugCheckBox.Checked, "ProgramTestExample.pdf");
+			return;
+			}
+
+		catch (Exception Ex)
+			{
+			// error exit
+			String[] ExceptionStack = ExceptionReport.GetMessageAndStack(Ex);
+			MessageBox.Show(this, "PDF Document creation falied\n" + ExceptionStack[0] + "\n" + ExceptionStack[1],
+				"PDFDocument Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+			return;
+			}
 		}
 
 	////////////////////////////////////////////////////////////////////
@@ -141,12 +186,21 @@ public partial class TestPdfFileWriter : Form
 
 	private void OnTableExample(object sender, EventArgs e)
 		{
-            ExceptionReport.Wrap("PDF Document creation falied",delegate
-			    {
-			    TableExample TE = new TableExample();
-			    TE.Test(DebugCheckBox.Checked, "TableExample.pdf");
-			    return;
-			    });
+		try
+			{
+			TableExample TE = new TableExample();
+			TE.Test(DebugCheckBox.Checked, "TableExample.pdf");
+			return;
+			}
+
+		catch (Exception Ex)
+			{
+			// error exit
+			String[] ExceptionStack = ExceptionReport.GetMessageAndStack(Ex);
+			MessageBox.Show(this, "PDF Document creation falied\n" + ExceptionStack[0] + "\n" + ExceptionStack[1],
+				"PDFDocument Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+			return;
+			}
 		}
 
 	////////////////////////////////////////////////////////////////////
@@ -174,7 +228,9 @@ public partial class TestPdfFileWriter : Form
 			FormClosingEventArgs e
 			)
 		{
+		#if DEBUG
 		Trace.Write("PDF file writer is closing");
+		#endif
 		return;
 		}
 	}

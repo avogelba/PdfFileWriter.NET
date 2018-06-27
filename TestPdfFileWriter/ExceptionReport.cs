@@ -8,11 +8,10 @@
 //  The class saves in a trace file the calling stack at the
 //  time of program exception.
 //
-//	Granotech Limited
-//	Author: Uzi Granot
+//	Uzi Granot
 //	Version: 1.0
 //	Date: April 1, 2013
-//	Copyright (C) 2013-2016 Granotech Limited. All Rights Reserved
+//	Copyright (C) 2013-2018 Uzi Granot. All Rights Reserved
 //
 //	PdfFileWriter C# class library and TestPdfFileWriter test/demo
 //  application are free software.
@@ -28,8 +27,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
-
 
 namespace TestPdfFileWriter
 {
@@ -39,27 +36,7 @@ public static class ExceptionReport
 	// Get exception message and exception stack
 	/////////////////////////////////////////////////////////////////////
 
-
-    public static void Wrap(string reason, Action fn) {
-        // don't catch these exceptions if a debugger is attached
-        if (System.Diagnostics.Debugger.IsAttached) {
-            fn(); 
-            return;
-        } else {
-            try {
-                fn();
-                return;
-            } catch (Exception Ex) {
-                // error exit
-                String[] ExceptionStack = ExceptionReport.GetMessageAndStack(Ex);                
-                MessageBox.Show(reason + "\n" + ExceptionStack[0] + "\n" + ExceptionStack[1],
-                    "TestPdfFileWriter Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-            }
-        }
-    }
-
-	private static String[] GetMessageAndStack
+	public static String[] GetMessageAndStack
 			(
 			Exception		Ex
 			)
@@ -75,13 +52,17 @@ public static class ExceptionReport
 
 		// exception error message
 		StackTrace.Add(Ex.Message);
+		#if DEBUG
 		Trace.Write(Ex.Message);
+		#endif
 
 		// add trace lines
 		foreach(String Line in StackTraceLines) if(Line.Contains("PdfFileWriter"))
 			{
 			StackTrace.Add(Line);
+			#if DEBUG
 			Trace.Write(Line);
+			#endif
 			}
 
 		// error exit

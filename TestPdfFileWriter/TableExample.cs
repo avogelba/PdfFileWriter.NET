@@ -6,11 +6,10 @@
 //	TableExample
 //	Produce PDF file when the Table Example is clicked.
 //
-//	Granotech Limited
-//	Author: Uzi Granot
+//	Uzi Granot
 //	Version: 1.0
 //	Date: April 1, 2013
-//	Copyright (C) 2013-2016 Granotech Limited. All Rights Reserved
+//	Copyright (C) 2013-2018 Uzi Granot. All Rights Reserved
 //
 //	PdfFileWriter C# class library and TestPdfFileWriter test/demo
 //  application are free software.
@@ -88,7 +87,7 @@ public class TableExample
 		}
 
 	////////////////////////////////////////////////////////////////////
-	// Create charting examples PDF document
+	// Create table example
 	////////////////////////////////////////////////////////////////////
 	
 	public void CreateBookList()
@@ -152,7 +151,7 @@ public class TableExample
 		BookList.Cell[5].Style.Alignment = ContentAlignment.MiddleRight;
 
 		// book list text file
-		StreamReader Reader = new StreamReader("TestFiles/BookList.txt");
+		StreamReader Reader = new StreamReader("BookList.txt");
 
 		// loop for records
 		for(;;)
@@ -166,7 +165,7 @@ public class TableExample
 			if(Fld.Length != 8) continue;
 
 			// book cover
-			BookList.Cell[0].Value = new PdfImage(Document, Path.Combine("TestFiles/", Fld[6]));
+			BookList.Cell[0].Value = new PdfImage(Document, Fld[6]);
 
 			// note create text box set Value field
 			TextBox Box = BookList.Cell[1].CreateTextBox();
@@ -247,7 +246,7 @@ public class TableExample
 		}
 
 	////////////////////////////////////////////////////////////////////
-	// Create charting examples PDF document
+	// Create table example
 	////////////////////////////////////////////////////////////////////
 	
 	public void CreateStockTable()
@@ -307,7 +306,7 @@ public class TableExample
 
 		// open stock daily price
 		// takem from Yahoo Financial
-		StreamReader Reader = new StreamReader("TestFiles/SP500.csv");
+		StreamReader Reader = new StreamReader("SP500.csv");
 
 		// ignore header
 		Reader.ReadLine();
